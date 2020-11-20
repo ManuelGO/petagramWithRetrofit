@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="corner_radius_cardview">4dp</dimen>
+    <dimen name="card_view_name">25sp</dimen>
+    <dimen name="toolbar_elevation">4sp</dimen>
+    <dimen name="toolbar_icons_width">40sp</dimen>
+    <dimen name="toolbar_icons_height">40sp</dimen>
+    <dimen name="toolbar_icons_title">30sp</dimen>
+    <dimen name="card_img_width">200sp</dimen>
+    <dimen name="card_img_height">200sp</dimen>
+
+</resources>
