@@ -2,8 +2,7 @@ package com.example.petagram;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,17 +11,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
 
-import com.example.petagram.adapters.PetAdapter;
-import com.example.petagram.pojo.Pet;
+import com.example.petagram.adapters.PageAdapter;
+import com.example.petagram.fragments.ProfileFragment;
+import com.example.petagram.fragments.RecyclerviewFragment;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Pet> pets;
     private Toolbar actionbar;
-    private RecyclerView recyclerView;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,34 +35,16 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(actionbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        recyclerView = (RecyclerView) findViewById(R.id.pet_recycler_view);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
 
-        recyclerView.setLayoutManager(llm);
-
-        initPetList();
-        initAdapter();
+        setUpViewPager();
     }
 
-    public void initAdapter() {
-        PetAdapter adapter = new PetAdapter(pets, this);
-        recyclerView.setAdapter(adapter);
-    }
 
-    public void initPetList() {
-        pets = new ArrayList<Pet>();
-        pets.add(new Pet("Kitty", "3", R.drawable.icons8_cat_head_96));
-        pets.add(new Pet("Doggy", "1", R.drawable.icons8_pug_96));
-        pets.add(new Pet("Pandy", "2", R.drawable.icons8_red_panda_96));
-        pets.add(new Pet("Parrot", "2", R.drawable.icons8_parrot_96));
-        pets.add(new Pet("Nemo", "4", R.drawable.icons8_fish_96));
-        pets.add(new Pet("Fox", "1", R.drawable.icons8_fox_96));
-
-    }
 
     public void takePicture(View view) {
-        Toast.makeText(this, "Picture taked", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Picture taken", Toast.LENGTH_SHORT).show();
     }
 
     public void goToNextActivity(View view) {
@@ -89,5 +73,22 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    // fragment:
+    private ArrayList<Fragment> addFragments() {
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        fragments.add(new RecyclerviewFragment());
+        fragments.add(new ProfileFragment());
+
+        return fragments;
+    }
+
+    private void setUpViewPager() {
+        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), 0, addFragments()));
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.getTabAt(0).setIcon(R.drawable.home);
+        tabLayout.getTabAt(1).setIcon(R.drawable.muzzle);
     }
 }

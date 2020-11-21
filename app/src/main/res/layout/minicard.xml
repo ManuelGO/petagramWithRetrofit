@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginBottom="20sp"
+    android:layout_width="110sp"
+    android:backgroundTint="#6C6CF3"
+    android:layout_height="90sp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:orientation="vertical"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:src="@drawable/icons8_pug_96"/>
+
+        <LinearLayout
+            android:layout_marginLeft="7sp"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/pet_mini_card_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="5"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/mini_icon_rating"
+                android:src="@drawable/icons8_dog_bone_48"
+                android:layout_width="@dimen/mini_icons_width"
+                android:layout_height="@dimen/mini_icons_height"
+                android:layout_marginRight="18dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
