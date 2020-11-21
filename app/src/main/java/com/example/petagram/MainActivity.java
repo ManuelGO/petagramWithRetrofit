@@ -1,11 +1,14 @@
 package com.example.petagram;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
@@ -65,9 +68,26 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.opt_menu, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.item_about:
+                Intent intent = new Intent(this, About.class);
+                startActivity(intent);
+                break;
+            case R.id.contact_item:
+                Intent newIntent = new Intent(this, ContactActivity.class);
+                startActivity(newIntent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

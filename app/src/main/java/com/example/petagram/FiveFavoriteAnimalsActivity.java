@@ -1,12 +1,16 @@
 package com.example.petagram;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.petagram.adapters.PetAdapter;
 import com.example.petagram.pojo.Pet;
@@ -54,5 +58,28 @@ public class FiveFavoriteAnimalsActivity extends AppCompatActivity {
         favoritePets.add(new Pet("Kitty", "3", R.drawable.icons8_cat_head_96));
         favoritePets.add(new Pet("Doggy", "1", R.drawable.icons8_pug_96));
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.opt_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.item_about:
+                Intent intent = new Intent(this, About.class);
+                startActivity(intent);
+                break;
+            case R.id.contact_item:
+                Intent newIntent = new Intent(this, ContactActivity.class);
+                startActivity(newIntent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 }

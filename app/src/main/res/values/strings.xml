@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Petagram</string>
+    <string name="contact_item">Contacto</string>
+    <string name="about_item">Acerca de</string>
+    <string name="about">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+   </string>
+    <string name="about2">
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.
+   </string>
+    <string name="about3">
+        Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas.
+   </string>
+    <string name="title_activity_contact">ScrollingActivity</string>
+    <string name="form_title">Formulario de Contacto</string>
+    <string name="input_name">Nombre</string>
+    <string name="input_email">ejemplo@email.com</string>
+    <string name="email_body">Cuerpo del mensaje</string>
+    <string name="form_btn">Enviar</string>
+    <string name="action_settings">Setting</string>
 </resources>
