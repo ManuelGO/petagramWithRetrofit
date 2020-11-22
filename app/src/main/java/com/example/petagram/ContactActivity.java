@@ -50,10 +50,10 @@ public class ContactActivity extends AppCompatActivity {
         editTextEmail       = findViewById(R.id.EditTextEmail);
         editTextFeedbackBody = findViewById(R.id.EditTextFeedbackBody);
         btnSendEmail        = findViewById(R.id.btnSendEmail);
-        final String toAddress = "manuelarvelo19@gmail.com";
+        final String toAddress = "";
 
         // Sender email credentials:
-        sEmail = "manuelarvelo19@gmail.com";
+        sEmail = "";
         sPassword = "";
         btnSendEmail.setOnClickListener(new View.OnClickListener() {
             @Override
