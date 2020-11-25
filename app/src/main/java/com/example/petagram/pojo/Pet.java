@@ -4,11 +4,24 @@ public class Pet {
     private String name;
     private String rating;
     private int image;
+    private  int id;
 
     public Pet(String name, String rating, int image) {
         this.name = name;
         this.rating = rating;
         this.image = image;
+    }
+
+    public Pet() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

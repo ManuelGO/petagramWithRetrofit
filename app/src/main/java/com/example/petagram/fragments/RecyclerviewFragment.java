@@ -15,14 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.petagram.R;
 import com.example.petagram.adapters.PetAdapter;
 import com.example.petagram.pojo.Pet;
+import com.example.petagram.presenter.IRecyclerviewFragmentPresenter;
+import com.example.petagram.presenter.RecyclerviewFragmentPresenter;
 
 import java.util.ArrayList;
 
 
-public class RecyclerviewFragment extends Fragment {
+public class RecyclerviewFragment extends Fragment implements IRecyclerviewFragmentView {
 
     private RecyclerView recyclerView;
-    ArrayList<Pet> pets;
+    private IRecyclerviewFragmentPresenter presenter;
+    private PetAdapter adapter;
 
 
     @Nullable
@@ -30,33 +33,29 @@ public class RecyclerviewFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // asociamos el fragment a un layout:
         View v = inflater.inflate(R.layout.fragment_recyclerview, container, false);
-
-
         recyclerView = (RecyclerView) v.findViewById(R.id.pet_recycler_view);
+        presenter = new RecyclerviewFragmentPresenter(this, getContext());
+        return v;
+    }
+
+
+    @Override
+    public void generateLinearLayout() {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
 
         recyclerView.setLayoutManager(llm);
-
-        initPetList();
-        initAdapter();
-
-        return v;
     }
 
-    public void initAdapter() {
-        PetAdapter adapter = new PetAdapter(pets, getActivity());
+    @Override
+    public PetAdapter createAdapter(ArrayList<Pet> pets) {
+        adapter = new PetAdapter(pets, getActivity());
+
+        return adapter;
+    }
+
+    @Override
+    public void initRVAdapter(PetAdapter petAdapter) {
         recyclerView.setAdapter(adapter);
-    }
-
-    public void initPetList() {
-        pets = new ArrayList<Pet>();
-        pets.add(new Pet("Kitty", "3", R.drawable.icons8_cat_head_96));
-        pets.add(new Pet("Doggy", "1", R.drawable.icons8_pug_96));
-        pets.add(new Pet("Pandy", "2", R.drawable.icons8_red_panda_96));
-        pets.add(new Pet("Parrot", "2", R.drawable.icons8_parrot_96));
-        pets.add(new Pet("Nemo", "4", R.drawable.icons8_fish_96));
-        pets.add(new Pet("Fox", "1", R.drawable.icons8_fox_96));
-
     }
 }

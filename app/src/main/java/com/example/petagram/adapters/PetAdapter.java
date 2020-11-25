@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.petagram.db.PetsConstructor;
 import com.example.petagram.pojo.Pet;
 import com.example.petagram.R;
 
@@ -43,12 +44,12 @@ public class PetAdapter extends  RecyclerView.Adapter<PetAdapter.PetViewHolder>{
         holder.imgIconName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int oldRating =  Integer.parseInt(pet.getRating());
-                Integer currentRating = ++oldRating;
-                pet.setRating(currentRating.toString());
-                holder.petCardRating.setText(pet.getRating());
+            Toast.makeText(activity, "Diste like a " + pet.getName(), Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(activity, "Diste like a " + pet.getName(), Toast.LENGTH_SHORT).show();
+            PetsConstructor petsConstructor = new PetsConstructor(activity);
+            petsConstructor.putPetRating(pet);
+            int rating = petsConstructor.getPetRating(pet);
+            holder.petCardRating.setText(Integer.toString(rating));
             }
         });
     }
