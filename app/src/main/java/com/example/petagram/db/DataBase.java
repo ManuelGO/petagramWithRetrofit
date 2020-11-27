@@ -40,15 +40,22 @@ public class DataBase extends SQLiteOpenHelper {
                 "FOREIGN KEY (" + DbConstants.RATING_PET_ID+ ")" +
                 "REFERENCES " + DbConstants.PET_TABLE + "(" + DbConstants.PET_ID + ")"
                 + ")";
+        String queryCreateFavoritePetsTable = "CREATE TABLE " + DbConstants.FAVORITE_PETS_TABLE + "(" +
+                DbConstants.FAVORITE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                DbConstants.FAVORITE_PETS_ID + " INTEGER, " +
+                "FOREIGN KEY (" + DbConstants.FAVORITE_PETS_ID + ")" +
+                "REFERENCES " + DbConstants.PET_TABLE + "(" + DbConstants.PET_ID + ")" + ")";
 
         db.execSQL(queryCreatePetTable);
         db.execSQL(queryCreatePetRating);
+        db.execSQL(queryCreateFavoritePetsTable);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + DbConstants.PET_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + DbConstants.RATING_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + DbConstants.FAVORITE_PETS_TABLE);
         onCreate(db);
     }
 
@@ -82,6 +89,7 @@ public class DataBase extends SQLiteOpenHelper {
         return pets;
     }
 
+
     public void insertPet(ContentValues contentValues) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(DbConstants.PET_TABLE, null, contentValues);
@@ -108,6 +116,26 @@ public class DataBase extends SQLiteOpenHelper {
         System.out.print(cursor);
         db.close();
         return rating;
+    }
+    public ArrayList<Integer> getFavoritePets() {
+        ArrayList<Integer> favorites = new ArrayList<>();
+        String query = "SELECT * FROM " + DbConstants.FAVORITE_PETS_TABLE;
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        Cursor response = db.rawQuery(query, null);
+
+        while (response.moveToNext()) {
+            favorites.add(response.getInt(1));
+        }
+        db.close();
+        return favorites;
+    };
+
+    public void insertFavoritePet(ContentValues contentValues) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.insert(DbConstants.FAVORITE_PETS_TABLE, null, contentValues);
+        db.close();
     }
 
 }

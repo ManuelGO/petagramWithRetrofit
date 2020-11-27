@@ -13,14 +13,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.petagram.adapters.PetAdapter;
+import com.example.petagram.db.PetsConstructor;
 import com.example.petagram.pojo.Pet;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 public class FiveFavoriteAnimalsActivity extends AppCompatActivity {
-    ArrayList<Pet> favoritePets;
+    ArrayList<Pet> favoritePets = new ArrayList<>();
     private RecyclerView recyclerView;
     Toolbar childActionbar;
+    private PetsConstructor petsConstructor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +57,25 @@ public class FiveFavoriteAnimalsActivity extends AppCompatActivity {
     }
 
     public void initPetList() {
-        favoritePets = new ArrayList<Pet>();
-        favoritePets.add(new Pet("Fox", "1", R.drawable.icons8_fox_96));
-        favoritePets.add(new Pet("Nemo", "4", R.drawable.icons8_fish_96));
-        favoritePets.add(new Pet("Pandy", "2", R.drawable.icons8_red_panda_96));
-        favoritePets.add(new Pet("Kitty", "3", R.drawable.icons8_cat_head_96));
-        favoritePets.add(new Pet("Doggy", "1", R.drawable.icons8_pug_96));
+        petsConstructor = new PetsConstructor(this.getApplicationContext());
+        ArrayList<Pet> pets = petsConstructor.getData();
+        ArrayList<Integer> idFavs = petsConstructor.getFavoritePets();
+        //eliminar dulicados:
+        Set<Integer> set = new LinkedHashSet<>();
+        set.addAll(idFavs);
+        idFavs.clear();
+        idFavs.addAll(set);
+
+        System.out.println("ANIMALES FAVORITOS " + idFavs.size());
+        ArrayList<Pet> result = new ArrayList<>();
+        for (Integer id: idFavs) {
+            for (Pet pet: pets) {
+                if (pet.getId() == id) {
+                    favoritePets.add((pet));
+                }
+            }
+        }
+
     }
 
     @Override

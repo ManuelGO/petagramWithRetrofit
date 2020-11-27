@@ -66,10 +66,23 @@ public class PetsConstructor {
         contentValues.put(DbConstants.RATING_PET_ID, pet.getId());
         contentValues.put(DbConstants.RATING_NUMBER, LIKE);
         db.insertPetRating(contentValues);
+        this.insertFavoritePet(pet.getId());
     }
 
     public int getPetRating(Pet pet) {
         DataBase db = new DataBase(context);
         return db.getPetRating(pet);
     }
+
+    public void insertFavoritePet(Integer id) {
+        DataBase db = new DataBase(context);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DbConstants.FAVORITE_PETS_ID, id);
+
+        db.insertFavoritePet(contentValues);
+    }
+    public ArrayList<Integer> getFavoritePets() {
+        DataBase db = new DataBase(context);
+        return db.getFavoritePets();
+    };
 }

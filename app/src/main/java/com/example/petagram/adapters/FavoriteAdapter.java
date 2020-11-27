@@ -14,7 +14,6 @@ import com.example.petagram.R;
 import com.example.petagram.pojo.Pet;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder> {
 
