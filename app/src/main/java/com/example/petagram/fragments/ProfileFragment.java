@@ -70,18 +70,18 @@ public class ProfileFragment extends Fragment {
 
     public void initPetList() {
         pics = new ArrayList<Pet>();
-        pics.add(new Pet("Doggy", "3", 0));
-        pics.add(new Pet("Doggy", "5", 0));
-        pics.add(new Pet("Doggy", "3", 0));
-        pics.add(new Pet("Doggy", "5", 0));
-        pics.add(new Pet("Doggy", "0", 0));
-        pics.add(new Pet("Doggy", "9", 0));
-        pics.add(new Pet("Doggy", "8", 0));
-        pics.add(new Pet("Doggy", "2", 0));
-        pics.add(new Pet("Doggy", "3", 0));
-        pics.add(new Pet("Doggy", "5", 0));
-        pics.add(new Pet("Doggy", "1", 0));
-        pics.add(new Pet("Doggy", "1", 0));
+        pics.add(new Pet("Doggy", "3", 0, null));
+        pics.add(new Pet("Doggy", "5", 0, null));
+        pics.add(new Pet("Doggy", "3", 0, null));
+        pics.add(new Pet("Doggy", "5", 0, null));
+        pics.add(new Pet("Doggy", "0", 0, null));
+        pics.add(new Pet("Doggy", "9", 0, null));
+        pics.add(new Pet("Doggy", "8", 0, null));
+        pics.add(new Pet("Doggy", "2", 0, null));
+        pics.add(new Pet("Doggy", "3", 0, null));
+        pics.add(new Pet("Doggy", "5", 0, null));
+        pics.add(new Pet("Doggy", "1", 0, null));
+        pics.add(new Pet("Doggy", "1", 0, null));
 
     }
 }

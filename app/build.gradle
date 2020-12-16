@@ -1,9 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
+    compileOptions {
+        targetCompatibility = "8"
+        sourceCompatibility = "8"
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
-
     packagingOptions {
         pickFirst 'META-INF/LICENSE.txt' // picks the JavaMail license file
     }
@@ -49,5 +52,13 @@ dependencies {
 
     // CircularImageView
     implementation 'com.mikhaellopez:circularimageview:4.2.0'
+
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    // picasso
+    implementation 'com.squareup.picasso:picasso:2.8'
+
+
 
 }

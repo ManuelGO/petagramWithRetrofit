@@ -12,4 +12,10 @@
         android:orderInCategory="101"
         >
     </item>
+    <item
+        android:id="@+id/account_item"
+        android:title="@string/account_item"
+        android:orderInCategory="103"
+        >
+    </item>
 </menu>

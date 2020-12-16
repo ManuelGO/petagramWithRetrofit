@@ -4,4 +4,5 @@ public interface IRecyclerviewFragmentPresenter {
 
     public void getPetsDataBase();
     public void showPetsRV();
+    public void getRecentMedia();
 }

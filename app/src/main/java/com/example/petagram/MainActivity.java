@@ -71,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent newIntent = new Intent(this, ContactActivity.class);
                 startActivity(newIntent);
                 break;
+            case R.id.account_item:
+                Intent accountItent = new Intent(this, SetAccount.class);
+                startActivity(accountItent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

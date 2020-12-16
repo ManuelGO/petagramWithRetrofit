@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.petagram.db.PetsConstructor;
 import com.example.petagram.pojo.Pet;
 import com.example.petagram.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -37,7 +38,8 @@ public class PetAdapter extends  RecyclerView.Adapter<PetAdapter.PetViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull final PetViewHolder holder, int position) {
         final Pet pet = pets.get(position);
-        holder.imgPhoto.setImageResource(pet.getImage());
+        // holder.imgPhoto.setImageResource(pet.getImage());
+        Picasso.get().load(pet.getMedia_url()).into(holder.imgPhoto);
         holder.petCardName.setText(pet.getName());
         holder.petCardRating.setText(pet.getRating());
 

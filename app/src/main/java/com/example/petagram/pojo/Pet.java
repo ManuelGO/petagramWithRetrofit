@@ -1,15 +1,18 @@
 package com.example.petagram.pojo;
 
 public class Pet {
+    //TODO: add img url property
     private String name;
     private String rating;
     private int image;
-    private  int id;
+    private String media_url;
+    private int id;
 
-    public Pet(String name, String rating, int image) {
+    public Pet(String name, String rating, int image, String media_url) {
         this.name = name;
         this.rating = rating;
         this.image = image;
+        this.media_url = media_url;
     }
 
     public Pet() {
@@ -46,5 +49,13 @@ public class Pet {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public String getMedia_url() {
+        return media_url;
+    }
+
+    public void setMedia_url(String media_url) {
+        this.media_url = media_url;
     }
 }
